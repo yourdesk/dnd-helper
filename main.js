@@ -13,8 +13,8 @@ function createBlock(title) {
     mainGrid.appendChild(section);
 }
 
-let blocks = "a b c d e e f".split(" ");
+let blocks = "a b c d e f".split(" ");
 
 for (let block of blocks) {
-    createBlock(blocks);
+    createBlock(block);
 }
