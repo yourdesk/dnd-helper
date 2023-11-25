@@ -25,12 +25,16 @@ nav {
 }
 
 #main-grid {
-    display: grid;
-    grid-template-areas: ". .";
+    display: flex;
     gap: 0.5rem;
 }
 
 #main-grid > section {
     border: 1px solid red;
     padding: 0.5rem;
+    width: 100%;
+}
+
+#main-grid.empty {
+    border: 1px dashed gray;
 }
