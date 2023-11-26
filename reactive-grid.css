@@ -1,0 +1,40 @@
+:root {
+    --grid-columns: 5;
+}
+
+#main-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    gap: 0.5rem;
+}
+
+#main-grid > .empty {
+    border: 1px dashed gray;
+}
+
+#main-grid > section {
+    border: 1px solid black;;
+    padding: 0.5rem;
+    height: 100px;
+}
+
+#main-grid > section > input {
+    width: 100%;
+}
+
+#main-grid > section.over {
+    opacity: 0.3;
+    border: 1px dashed black;
+}
+
+#main-grid > section > div.input {
+    border: 1px dotted gray;
+    padding: 0.1rem;
+    border-radius: 3px;
+}
+
+#main-grid > section > div.input:focus {
+    outline: 0px solid transparent;
+    border: 1px solid black;
+    border-radius: 3px;
+}
