@@ -35,3 +35,5 @@ for (let block of blocks) {
     let section = newBlock(block);
     mainGrid.appendChild(section);
 }
+
+mainGrid.appendChild(newEmptyBlock());

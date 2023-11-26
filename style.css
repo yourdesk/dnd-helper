@@ -1,3 +1,13 @@
+:root {
+    --n-boxes: 3;
+    /* for any n, (100% - ((n - 1) / 2)rem / n) will perfectly pad the boxes */
+    --step1: calc(var(--n-boxes) - 1);
+    --step2: calc(var(--step1) / 2);
+    --step3: calc(var(--step2) * 1rem);
+    --step4: calc(100% - var(--step3));
+    --final: calc(var(--step4) / var(--n-boxes));
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,14 +37,20 @@ nav {
 #main-grid {
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+#main-grid > .empty {
+    border: 1px dashed gray;
 }
 
 #main-grid > section {
     border: 1px solid red;
     padding: 0.5rem;
-    width: 100%;
+    width: var(--final);
+    height: 100px;
 }
 
-#main-grid.empty {
-    border: 1px dashed gray;
+#main-grid > section > input {
+    width: 100%;
 }
