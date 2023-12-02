@@ -13,9 +13,21 @@
 }
 
 #main-grid > section {
-    border: 1px solid black;;
+    border: 2px solid lightgray;
+    border-radius: 15px;
+    overflow: hidden;
     padding: 0.5rem;
     height: 100px;
+}
+
+#main-grid > section:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    box-shadow: lightgray 10px 10px 10px;
 }
 
 #main-grid > section > input {
