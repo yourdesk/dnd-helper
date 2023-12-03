@@ -2,11 +2,7 @@ function handleDragStart(e) {
     this.style.opacity = '0.4';
 
     dragSrcEl = this;
-
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', this.innerHTML);
-    e.dataTransfer.setData('application/x-element-classes', this.className);
-    e.dataTransfer.setData('application/x-element-id', this.id);
+    globalDraggedId = this.id;
 }
 
 function handleDragEnd(e) {
@@ -31,16 +27,19 @@ function handleDragLeave(e) {
 }
 
 function handleDrop(e) {
+    globalDroppedId = this.id;
     e.stopPropagation();
+    
+    let newDraggedBlock = blockData.getBlockById(globalDraggedId);
+    let newDroppedBlock = blockData.getBlockById(globalDroppedId);
 
-    if (dragSrcEl !== this) {
-        dragSrcEl.innerHTML = this.innerHTML;
-        dragSrcEl.classList = this.classList;
-        dragSrcEl.id = this.id; 
-        this.innerHTML = e.dataTransfer.getData('text/html');
-        this.className = e.dataTransfer.getData('application/x-element-classes');
-        this.id = e.dataTransfer.getData('application/x-element-id')
-    }
+    let draggedElement = document.getElementById(globalDraggedId);
+    let droppedElement = document.getElementById(globalDroppedId);
+
+    draggedElement.replaceWith(newDroppedBlock.getElement());
+    droppedElement.replaceWith(newDraggedBlock.getElement());
+
+    console.log(draggedElement, droppedElement);
 
     return false;
 }
