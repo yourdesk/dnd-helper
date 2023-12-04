@@ -9,7 +9,7 @@ body {
     height: 100%;
 }
 
-body>* {
+body > * {
     padding: 0.5rem;
     margin: 0.5rem;
 }
@@ -29,6 +29,31 @@ footer {
 nav {
     display: flex;
     justify-content: space-between;
+}
+
+div#modal.shown {
+    & + header {
+        display: none;
+    }
+
+    & + header + main {
+        display: none;
+    }
+
+    & + header + main + footer {
+        display: none;
+    }
+}
+
+#modal.shown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal {
+    height: 100%;
+    display: none;
 }
 
 *::-webkit-scrollbar {
