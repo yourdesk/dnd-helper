@@ -8,29 +8,29 @@
     display: grid;
     grid-template-columns: repeat(var(--grid-columns), 1fr);
     gap: 0.5rem;
-}
 
-#main-grid > .empty {
-    border: 1px dashed gray;
-}
+    > .empty {
+        border: 1px dashed gray;
+    }
 
-#main-grid > section {
-    border: 2px solid lightgray;
-    border-radius: 15px;
-    /* overflow-y: hidden; */
-    padding: 0.5rem;
-    height: var(--grid-item-height);
-    overflow: hidden;
-}
+    > section {    
+        border: 2px solid lightgray;
+        border-radius: 15px;
+        /* overflow-y: hidden; */
+        padding: 0.5rem;
+        height: var(--grid-item-height);
+        overflow: hidden;
 
-#main-grid > section.over {
-    opacity: 0.3;
-    border: 1px dashed black;
-}
+        > .over {    
+        opacity: 0.3;
+        border: 1px dashed black;
+        }
 
-#main-grid > section > .inner {
-    height: 100%;
-    overflow-y: scroll;
+        > .inner {
+            height: 100%;
+            overflow-y: scroll;
+        }
+    }
 }
 
 /* inner div SDB */
