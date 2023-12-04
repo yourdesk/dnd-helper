@@ -6,9 +6,10 @@ class SingleDataBlock {
     }
 
     getElement() {
-        let section = newSection();
+        let section = new SectionWrapper();
 
-        section.id = this.internalID;
+        section.outer.id = this.internalID;
+        section.outer.classList.add("single-data-block");
     
         let textElement = elem('p');
         textElement.innerText = this.title;
@@ -18,12 +19,11 @@ class SingleDataBlock {
         input.innerText = this.contents;
 
         input.oninput = (event) => {
-            console.log(event.target.parentNode)
             this.contents = event.target.textContent;
         }
     
-        section.appendChild(textElement);
-        section.appendChild(input);
+        section.inner.appendChild(textElement);
+        section.inner.appendChild(input);
 
         return section;
     }

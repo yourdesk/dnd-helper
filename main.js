@@ -7,7 +7,7 @@ for (let i = 0; i < 10; i++) {
     let dataTest = new SingleDataBlock('pluh ' + i); 
     let section = dataTest.getElement();
 
-    mainGrid.appendChild(section);
+    mainGrid.appendChild(section.outer);
     blockData.add(dataTest);
 }
 

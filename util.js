@@ -1,12 +1,29 @@
+class SectionWrapper {
+    constructor() {
+        this.outer = document.createElement('section');
+        this.inner = document.createElement('div');
+
+        this.inner.classList.add("inner");
+
+        this.outer.draggable = 'true';
+        this.outer.ondragstart = handleDragStart;
+        this.outer.ondragover = handleDragOver;
+        this.outer.ondragenter = handleDragEnter;
+        this.outer.ondragleave = handleDragLeave;
+        this.outer.ondragend = handleDragEnd;
+        this.outer.ondrop = handleDrop;
+
+        this.outer.appendChild(this.inner);
+    }
+}
+
 function newSection() {
     let section = document.createElement('section');
-    section.draggable = 'true';
-    section.ondragstart = handleDragStart;
-    section.ondragover = handleDragOver;
-    section.ondragenter = handleDragEnter;
-    section.ondragleave = handleDragLeave;
-    section.ondragend = handleDragEnd;
-    section.ondrop = handleDrop;
+    
+    let inner = document.createElement('div');
+
+
+
     return section;
 }
 

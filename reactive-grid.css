@@ -1,7 +1,9 @@
 :root {
     --grid-columns: 5;
+    --grid-item-height: 100px;
 }
 
+/* main grid, duh */
 #main-grid {
     display: grid;
     grid-template-columns: repeat(var(--grid-columns), 1fr);
@@ -15,23 +17,10 @@
 #main-grid > section {
     border: 2px solid lightgray;
     border-radius: 15px;
-    overflow: hidden;
+    /* overflow-y: hidden; */
     padding: 0.5rem;
-    height: 100px;
-}
-
-#main-grid > section:after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    box-shadow: lightgray 10px 10px 10px;
-}
-
-#main-grid > section > input {
-    width: 100%;
+    height: var(--grid-item-height);
+    overflow: hidden;
 }
 
 #main-grid > section.over {
@@ -39,13 +28,19 @@
     border: 1px dashed black;
 }
 
-#main-grid > section > div.input {
+#main-grid > section > .inner {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+/* inner div SDB */
+#main-grid section.single-data-block > .inner div.input {
     border: 1px dotted gray;
     padding: 0.1rem;
     border-radius: 3px;
 }
 
-#main-grid > section > div.input:focus {
+#main-grid section.single-data-block > .inner div.input:focus {
     outline: 0px solid transparent;
     border: 1px solid black;
     border-radius: 3px;

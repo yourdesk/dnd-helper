@@ -7,10 +7,6 @@ function handleDragStart(e) {
 
 function handleDragEnd(e) {
     this.style.opacity = '1';
-
-    mainGrid.childNodes.forEach(element => {
-        element.classList.remove('over');
-    });
 }
 
 function handleDragOver(e) {
@@ -36,8 +32,8 @@ function handleDrop(e) {
     let draggedElement = document.getElementById(globalDraggedId);
     let droppedElement = document.getElementById(globalDroppedId);
 
-    draggedElement.replaceWith(newDroppedBlock.getElement());
-    droppedElement.replaceWith(newDraggedBlock.getElement());
+    draggedElement.replaceWith(newDroppedBlock.getElement().outer);
+    droppedElement.replaceWith(newDraggedBlock.getElement().outer);
 
     console.log(draggedElement, droppedElement);
 
