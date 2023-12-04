@@ -3,7 +3,7 @@ class SectionWrapper {
         this.outer = document.createElement('section');
         this.inner = document.createElement('div');
 
-        this.inner.classList.add("inner");
+        this.inner.classList.add('inner');
 
         this.outer.draggable = 'true';
         this.outer.ondragstart = handleDragStart;
@@ -17,41 +17,8 @@ class SectionWrapper {
     }
 }
 
-function newSection() {
-    let section = document.createElement('section');
-    
-    let inner = document.createElement('div');
-
-
-
-    return section;
-}
-
 function elem(type) {
     return document.createElement(type);
-}
-
-function newBlock(title) {
-    let section = newSection();
-
-    section.id = title;
-
-    let textElement = elem('p');
-    textElement.innerText = title;
-    let input = elem('div');
-    input.classList.add('input');
-    input.contentEditable = 'true';
-
-    section.appendChild(textElement);
-    section.appendChild(input);
-
-    return section;
-}
-
-function newEmptyBlock() {
-    let section = newSection();
-    section.className = 'empty';
-    return section;
 }
 
 function rand(min, max) {
@@ -73,10 +40,15 @@ function generateID() {
     return temp;
 }
 
-// const addEventListener_orig = HTMLElement.prototype.addEventListener;
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
 
-// HTMLElement.prototype.addEventListener = (event, handler, bubbling) => {
+    element.style.display = 'none';
+    document.body.appendChild(element);
 
+    element.click();
 
-//     addEventListener_orig.call(this, event, handler, bubbling);
-// }
+    document.body.removeChild(element);
+}

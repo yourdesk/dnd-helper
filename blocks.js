@@ -9,7 +9,7 @@ class SingleDataBlock {
         let section = new SectionWrapper();
 
         section.outer.id = this.internalID;
-        section.outer.classList.add("single-data-block");
+        section.outer.classList.add('single-data-block');
     
         let textElement = elem('p');
         textElement.innerText = this.title;
@@ -37,5 +37,21 @@ class SingleDataBlock {
             },
             'internalID': this.internalID
         }
+    }
+}
+
+class CountersBlock {
+    constructor() {
+        this.title = title;
+        this.internalID = generateID();
+        this.contents = {};
+    }
+
+    getElement() {
+
+    }
+
+    toJSON() {
+
     }
 }
