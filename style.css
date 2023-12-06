@@ -32,16 +32,8 @@ nav {
 }
 
 div#modal.shown {
-    & + header {
-        display: none;
-    }
-
-    & + header + main {
-        display: none;
-    }
-
-    & + header + main + footer {
-        display: none;
+    &:not(.shown) {
+        display: hidden;
     }
 }
 

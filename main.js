@@ -1,6 +1,17 @@
-let mainGrid = document.getElementById('main-grid');
+class BlockRenderer {
+    constructor(blockData) {
+        this.mainGrid = document.getElementById('main-grid');
+        this.blockData = blockData;
+    }
 
-let blocks = 'a b c d e f'.split(' ');
+    renderAll() {
+        for (let i = 0; i < this.blockData.length; i++) {
+            this.mainGrid.appendChild(this.blockData[i].getElement().outer);
+        }
+    }
+}
+
+let mainGrid = document.getElementById('main-grid');
 let blockData = new BlockDataContainer();
 
 for (let i = 0; i < 10; i++) {
@@ -17,6 +28,7 @@ let loadButton = document.getElementById('load');
 let saveButton = document.getElementById('save');
 let showModalButton = document.getElementById('showModal');
 let modalElement = document.getElementById('modal');
+
 loadButton.onclick = () => {
     
 }
@@ -27,9 +39,13 @@ saveButton.onclick = () => {
 }
 
 showModalButton.onclick = () => {
-    if (modalElement.classList.contains('shown')) {
-        modalElement.classList.remove('shown');
-    } else {
-        modalElement.classList.add('shown');
-    }
+    modalElement.classList.toggle('shown');
+}
+
+modalElement.onclick = (event) => {
+    if (event.target == this) {
+        return;
+    }   
+
+    modalElement.classList.toggle('shown');
 }

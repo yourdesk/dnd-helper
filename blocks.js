@@ -3,13 +3,15 @@ class SingleDataBlock {
         this.title = title;
         this.internalID = generateID();
         this.contents = '';
+        this.width = 1;
+        this.height = 1;
     }
 
     getElement() {
         let section = new SectionWrapper();
 
         section.outer.id = this.internalID;
-        section.outer.classList.add('single-data-block');
+        section.outer.classList.add('single-data-block'); 
     
         let textElement = elem('p');
         textElement.innerText = this.title;

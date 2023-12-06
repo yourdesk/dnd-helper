@@ -5,6 +5,12 @@ class SectionWrapper {
 
         this.inner.classList.add('inner');
 
+        let settingsButton = document.createElement('img');
+        settingsButton.src = 'images/gear.svg';
+        settingsButton.classList.add('settings-btn');
+
+        this.inner.appendChild(settingsButton);
+
         this.outer.draggable = 'true';
         this.outer.ondragstart = handleDragStart;
         this.outer.ondragover = handleDragOver;
@@ -51,4 +57,19 @@ function download(filename, text) {
     element.click();
 
     document.body.removeChild(element);
+}
+
+function getPositionInGrid(index) {
+    let nColumns = window.getComputedStyle(mainGrid).gridTemplateColumns.split(" ").length;
+
+    return { 
+        row: (Math.floor(index / nColumns)), 
+        column: (index % nColumns)
+    }
+}
+
+function getElementIndex(elm) {
+    let c = elm.parentNode.children,
+        i = 0;
+    for (; i < c.length; i++) if (c[i] == elm) return i;
 }
