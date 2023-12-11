@@ -5,6 +5,7 @@
 
 body {
     display: flex;
+    overflow: hidden;
     flex-direction: column;
     height: 100%;
 }
@@ -31,21 +32,21 @@ nav {
     justify-content: space-between;
 }
 
-div#modal.shown {
-    &:not(.shown) {
-        display: hidden;
-    }
+#modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: none;
 }
 
 #modal.shown {
+    background-color: white;
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#modal {
-    height: 100%;
-    display: none;
 }
 
 *::-webkit-scrollbar {
@@ -60,4 +61,13 @@ div#modal.shown {
 *::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: 20px;
+}
+
+.modal-popup {
+    position: absolute;
+    z-index: 9999;
+    background-color: white;
+    padding: 0.2rem;
+    border: 1px dotted black;
+    border-radius: 5px;
 }

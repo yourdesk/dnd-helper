@@ -1,4 +1,4 @@
-class BlockDataContainer {
+export class BlockDataContainer {
     constructor() {
         this.blocks = [];
         this.currentIndex = 0;

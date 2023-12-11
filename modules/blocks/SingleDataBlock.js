@@ -1,4 +1,7 @@
-class SingleDataBlock {
+import { SectionWrapper } from "../SectionWrapper.js";
+import { generateID, elem } from "../util.js";
+
+export class SingleDataBlock {
     constructor(title) {
         this.title = title;
         this.internalID = generateID();
@@ -39,21 +42,5 @@ class SingleDataBlock {
             },
             'internalID': this.internalID
         }
-    }
-}
-
-class CountersBlock {
-    constructor() {
-        this.title = title;
-        this.internalID = generateID();
-        this.contents = {};
-    }
-
-    getElement() {
-
-    }
-
-    toJSON() {
-
     }
 }

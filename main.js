@@ -1,3 +1,8 @@
+import { SingleDataBlock } from './modules/blocks/SingleDataBlock.js';
+import { download } from './modules/util.js';
+import { BlockDataContainer } from './modules/BlockDataContainer.js';
+import { test_PutBoxAboveElement, test_removePopupModalByElement } from './modules/modal.js';
+
 class BlockRenderer {
     constructor(blockData) {
         this.mainGrid = document.getElementById('main-grid');
@@ -12,7 +17,7 @@ class BlockRenderer {
 }
 
 let mainGrid = document.getElementById('main-grid');
-let blockData = new BlockDataContainer();
+window.blockData = new BlockDataContainer();
 
 for (let i = 0; i < 10; i++) {
     let dataTest = new SingleDataBlock('pluh ' + i);
@@ -49,3 +54,6 @@ modalElement.onclick = (event) => {
 
     modalElement.classList.toggle('shown');
 }
+
+window.test_PutBoxAboveElement = test_PutBoxAboveElement;
+window.test_removePopupModalByElement = test_removePopupModalByElement;

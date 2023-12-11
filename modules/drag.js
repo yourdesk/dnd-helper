@@ -1,8 +1,7 @@
 function handleDragStart(e) {
     this.style.opacity = '0.4';
 
-    dragSrcEl = this;
-    globalDraggedId = this.id;
+    window.globalDraggedId = this.id;
 }
 
 function handleDragEnd(e) {
@@ -23,11 +22,11 @@ function handleDragLeave(e) {
 }
 
 function handleDrop(e) {
-    globalDroppedId = this.id;
+    window.globalDroppedId = this.id;
     e.stopPropagation();
     
-    let newDraggedBlock = blockData.getBlockById(globalDraggedId);
-    let newDroppedBlock = blockData.getBlockById(globalDroppedId);
+    let newDraggedBlock = window.blockData.getBlockById(globalDraggedId);
+    let newDroppedBlock = window.blockData.getBlockById(globalDroppedId);
 
     let draggedElement = document.getElementById(globalDraggedId);
     let droppedElement = document.getElementById(globalDroppedId);
@@ -38,4 +37,13 @@ function handleDrop(e) {
     console.log(draggedElement, droppedElement);
 
     return false;
+}
+
+export {
+    handleDragStart,
+    handleDragEnd,
+    handleDragEnter,
+    handleDragLeave,
+    handleDragOver,
+    handleDrop
 }

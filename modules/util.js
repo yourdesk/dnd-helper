@@ -1,33 +1,8 @@
-class SectionWrapper {
-    constructor() {
-        this.outer = document.createElement('section');
-        this.inner = document.createElement('div');
-
-        this.inner.classList.add('inner');
-
-        let settingsButton = document.createElement('img');
-        settingsButton.src = 'images/gear.svg';
-        settingsButton.classList.add('settings-btn');
-
-        this.inner.appendChild(settingsButton);
-
-        this.outer.draggable = 'true';
-        this.outer.ondragstart = handleDragStart;
-        this.outer.ondragover = handleDragOver;
-        this.outer.ondragenter = handleDragEnter;
-        this.outer.ondragleave = handleDragLeave;
-        this.outer.ondragend = handleDragEnd;
-        this.outer.ondrop = handleDrop;
-
-        this.outer.appendChild(this.inner);
-    }
-}
-
-function elem(type) {
+export function elem(type) {
     return document.createElement(type);
 }
 
-function rand(min, max) {
+export function rand(min, max) {
     if (max === undefined) {
         return Math.floor(Math.random() * min);
     }
@@ -37,7 +12,7 @@ function rand(min, max) {
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
 
-function generateID() {
+export function generateID() {
     let temp = '';
     for (let i = 0; i < 10; i++) {
         temp += chars.charAt(rand(chars.length));
@@ -46,7 +21,7 @@ function generateID() {
     return temp;
 }
 
-function download(filename, text) {
+export function download(filename, text) {
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
@@ -59,7 +34,17 @@ function download(filename, text) {
     document.body.removeChild(element);
 }
 
-function getPositionInGrid(index) {
+export function textToData(text) {
+    // TODO : load data from a file.
+    // this also requires the position of each
+    // block to be stored somewhere.
+    // preferably, the position in the grid will 
+    // be a part of the block itself, and each one
+    // will be rendered in order, in its 
+    // correct position
+}
+
+export function getPositionInGrid(index) {
     let nColumns = window.getComputedStyle(mainGrid).gridTemplateColumns.split(" ").length;
 
     return { 
@@ -68,7 +53,7 @@ function getPositionInGrid(index) {
     }
 }
 
-function getElementIndex(elm) {
+export function getElementIndex(elm) {
     let c = elm.parentNode.children,
         i = 0;
     for (; i < c.length; i++) if (c[i] == elm) return i;
